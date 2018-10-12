@@ -12,6 +12,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- //for-mobile-apps -->
 <link href="{{asset('front/css/bootstrap.css')}}" rel="stylesheet" type="text/css" media="all" />
 <link rel="stylesheet" type="text/css" href="{{asset('front/css/jquery-ui.css')}}">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
 
 
 <!-- pignose css -->
@@ -37,6 +38,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- for bootstrap working -->
 	<script type="text/javascript" src="{{asset('front/js/bootstrap-3.1.1.min.js')}}"></script>
 <!-- //for bootstrap working -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js">
+
 <link href='//fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 <link href='//fonts.googleapis.com/css?family=Lato:400,100,100italic,300,300italic,400italic,700,900,900italic,700italic' rel='stylesheet' type='text/css'>
 <script src="{{asset('front/js/jquery.easing.min.js')}}"></script>
@@ -99,6 +102,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 												<input type="checkbox"  id="brand" value="">
 												<label for="brand"><span></span>Remember Me.</label>
 											</div>
+
 											<div class="sign-in">
 												<input type="submit" value="SIGNIN" >
 											</div>
@@ -113,5 +117,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 			</div>
 <!-- //login -->
+
+</script>
+
+<script>
+  $( function() {
+
+    $( "#searchbar" ).autocomplete({
+      source:  '{{ asset('search') }}'
+    });
+  } );
+  </script>
 </body>
 </html>

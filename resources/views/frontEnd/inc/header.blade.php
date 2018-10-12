@@ -27,7 +27,7 @@
 		<div class="col-md-6 header-middle">
 			<form>
 				<div class="search">
-					<input type="search" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}" required="">
+					<input type="search" value="Search" name="searchbar" id="searchbar" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}" required="">
 				</div>
 				<div class="section_room">
 					<select id="country" onchange="change_country(this.value)" class="frm-field required">
