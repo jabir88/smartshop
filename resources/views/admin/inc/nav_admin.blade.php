@@ -73,6 +73,12 @@
               <a href="{{url('admin/contact-message')}}">Contact-Message</a>
             </li>
             @endif
+            @if (empty(Auth::user()->provider_id))
+
+            <li>
+              <a href="{!! route('password.change') !!}">Password Change</a>
+            </li>
+          @endif
             <li>
                 <a href="#"><i class="fa fa-wrench fa-fw"></i> UI Elements<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">

@@ -64,14 +64,14 @@
 	@endif -->
 
 
-			@if($errors->any())
+			{{-- @if($errors->any())
 				<div class="alert alert-danger alert-dismissable contact_al">
 					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
 					@foreach ($errors->all() as $error)
 							<div>{{ $error }}</div>
 					@endforeach
 				</div>
-			@endif
+			@endif --}}
 
 
 
@@ -84,9 +84,34 @@
 				<div class="contact-form2">
 
 					<input type="text" placeholder="Name" name="Name"  value="{{old('Name')}}">
-					<input type= "email" placeholder="Email" name= "Email"  value="{{old('Email')}}">
+					<div class="" style="color:red ; display:inline-block">
+						@if ($errors->has('Name'))
+								<span class="invalid-feedback" role="alert">
+										<strong>{{ $errors->first('Name') }}</strong>
+								</span>
+						@endif
+					</div>
+
+					<input type= "text" placeholder="Email" name= "Email"  value="{{old('Email')}}">
+					<div class="" style="color:red ; display:inline-block">
+						@if ($errors->has('Email'))
+								<span class="invalid-feedback" role="alert">
+										<strong>{{ $errors->first('Email') }}</strong>
+								</span>
+						@endif
+					</div>
+
 					<textarea type="text" name="Message" placeholder="Message...">{{old('Message')}}</textarea>
+					<div class="" style="color:red ; display:block ; margin-bottom:10px">
+						@if ($errors->has('Message'))
+								<span class="invalid-feedback" role="alert">
+										<strong>{{ $errors->first('Message') }}</strong>
+								</span>
+						@endif
+					</div>
+					<div class="my-2">
 					<input type="submit" value="Submit">
+				</div>
 				</div>
 			</form>
 		</div>

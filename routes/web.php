@@ -22,6 +22,8 @@ Route::get('/', 'MyController@home')->name('');
 Route::get('/category/{id}', 'MyController@category')->name('');
 Route::get('/codes', 'MyController@codes')->name('');
 Route::get('/contact', 'MyController@contact')->name('');
+
+Route::post('contact/submit', 'MyController@insertme')->name('');
 Route::get('/single/{pro_id}', 'MyController@single')->name('');
 
 // Cart Routes
@@ -67,9 +69,12 @@ Route::get('/admin/permission', 'AdminController@permission')->name('');
 Route::get('admin/contact-message', 'ContactController@contactmess')->name('');
 Route::get('admin/contact-message/mark/{conus_id}', 'ContactController@contactmark')->name('');
 
+//password change
+Route::get('admin/password/change', 'AdminController@changepassword')->name('password.change');
+Route::post('admin/password/change/submit', 'AdminController@changepasswordsubmite')->name('password.change.submit');
+
 Route::get('admin/all-users', 'AdminController@alluser')->name('');
 
-Route::post('contact/submit', 'ContactController@insertme')->name('');
 // Category info
 Route::get('admin/category/add', 'CategoryController@addcate')->name('');
 Route::post('admin/category/save', 'CategoryController@storeCategory')->name('');

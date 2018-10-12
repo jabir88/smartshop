@@ -63,24 +63,23 @@
 						</div>
 					</div>
 					<div class="form-group">
+						<label for="address" class="cols-sm-2 control-label">Country Name : </label>
+						<select  name="shipping_country">
+							<option selected>select country name</option>
+						@foreach ($countries_name as $country_name)
+
+							<option value="{{ $country_name->id }}">{{ $country_name->name }}</option>
+						@endforeach
+						</select>
+					</div>
+					<div class="form-group">
 						<label for="address" class="cols-sm-2 control-label">City Name : </label>
 						<select  name="shipping_city">
 						<option selected>select city name</option>
-						<option value="Dhaka">Dhaka</option>
-						<option value="Feni">Feni</option>
-						<option value="Noyakhali">Noyakhali</option>
-						<option value="Pabna">Pabna</option>
+						@foreach ($cities_name as $city_name)
+							{{-- <option value="{{ $city_name->id }}">{{ $city_name->name }}</option> --}}
+						@endforeach
 					</select>
-					</div>
-					<div class="form-group">
-						<label for="address" class="cols-sm-2 control-label">Country Name : </label>
-							<select  name="shipping_country">
-								<option selected>select country name</option>
-								<option value="Bangladesh">Bangladesh</option>
-								<option value="India">India</option>
-								<option value="Pakistan">Pakistan</option>
-								<option value="Srilanka">Srilanka</option>
-							</select>
 					</div>
 
 					<div class="form-group ">

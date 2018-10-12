@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
+use Hash;
 use App\Contact;
 use App\Product;
 use Carbon\Carbon;
@@ -16,21 +17,55 @@ class AdminController extends Controller
         $this->middleware('auth');
         $this->middleware('member');
     }
-    public function  dashme()
+    public function dashme()
     {
-      $countme = User::all()->count();
+        $countme = User::all()->count();
 
-      return view('admin.dashboard.dashboardContent',compact('countme'));
+        return view('admin.dashboard.dashboardContent', compact('countme'));
     }
 
     public function permission()
     {
-      return  "You Have No Permission!";
+        return  "You Have No Permission!";
     }
-    public function  alluser()
+    public function alluser()
     {
-      // $alluser = User::where('status','1')->orderBy('id','DESC')->simplepaginate(5);
-      $alluser = User::where('status','1')->orderBy('id','DESC')->paginate(5);
-      return view('admin.users.alluser',compact('alluser'));
+        // $alluser = User::where('status','1')->orderBy('id','DESC')->simplepaginate(5);
+        $alluser = User::where('status', '1')->orderBy('id', 'DESC')->paginate(5);
+        return view('admin.users.alluser', compact('alluser'));
+    }
+    public function changepassword()
+    {
+        return view('admin.password.passwordchange');
+    }
+    public function changepasswordsubmite(Request $request)
+    {
+        $request -> validate([
+          'old_pass' => 'required',
+          'new_pass' => 'required|string|min:6',
+          'retype_pass' => 'required|same:new_pass',
+
+        ], [
+          'old_pass.required' => "Please Enter Your Old Password!",
+          'new_pass.required' => "Please Enter Your New Password!",
+          'new_pass.string' => "Invalid New Password!",
+          'new_pass.min' => "New Password should be minimum 6 characters!",
+          'retype_pass.required' => "Please Enter Your Re-type Password!",
+          'retype_pass.same' => "Password Doesn't Match!",
+        ]);
+
+        if (Hash::check($request->old_pass, Auth::user()->password)) {
+            $new_pass = bcrypt($request->new_pass);
+            if (Hash::check($request->old_pass, $new_pass)) {
+                return back()->with('error', "Old Password and New Password Should be different");
+            } else {
+                User::where('id', Auth::user()->id)->update([
+                    'password' => $new_pass
+                  ]);
+                return back()->with('status', "Password Change Successfully");
+            }
+        } else {
+            return back()->with('error', "Old Password Does't Macth ");
+        }
     }
 }
