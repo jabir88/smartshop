@@ -13,7 +13,8 @@
         "laravel/tinker": "^1.0",
         "laravelcollective/html": "^5.4.0",
         "paypal/rest-api-sdk-php": "^1.13",
-        "pragmarx/countries": "^0.5.9"
+        "pragmarx/countries": "^0.5.9",
+        "spatie/laravel-backup": "^5.10"
     },
     "require-dev": {
         "filp/whoops": "^2.0",

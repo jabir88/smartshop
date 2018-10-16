@@ -5106,3 +5106,7 @@ td.invert-image a img {
 		font-size: 18px;
 }
 /*-- //responsive media queries --*/
+#panel .panel-heading a{
+	color: #fff;
+	text-align: right;
+}

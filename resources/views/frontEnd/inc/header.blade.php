@@ -30,15 +30,29 @@
 					<input type="search" value="Search" name="searchbar" id="searchbar" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}" required="">
 				</div>
 				<div class="section_room">
-					<select id="country" onchange="change_country(this.value)" class="frm-field required">
-						<option value="null">All categories</option>
-						<option value="null">Electronics</option>
-						<option value="AX">kids Wear</option>
-						<option value="AX">Men's Wear</option>
-						<option value="AX">Women's Wear</option>
-						<option value="AX">Watches</option>
+					<select id="country" onChange="" class="frm-field required">
+						<option value="null" selected>All categories</option>
+						@foreach ($cate2 as $cate)
+
+							<option value="{{ $cate->id }}">{{ $cate->category_name }}</option>
+						@endforeach
+
+					<script type="text/javascript">
+						function myNewFunction(sel) {
+							var text = sel.options[sel.selectedIndex].text;
+
+						}
+
+						// $(document).ready(function(){
+							// $("#country option").click(function(){
+							//  var h =	$("#country option:selected").text();
+							//  alert(h);
+							// });
+						// });
+					</script>
 					</select>
 				</div>
+
 				<div class="sear-sub">
 					<input type="submit" value=" ">
 				</div>

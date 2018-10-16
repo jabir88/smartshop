@@ -66,13 +66,19 @@ class MyController extends Controller
         $term =$request->term;
         $items = Product::where('product_name', 'LIKE', '%'.$term.'%')->get();
         // return   $items;
+
         if (count($items) == 0) {
             $searchResult[]= "No Product Found!";
         } else {
             foreach ($items as $item) {
                 $searchResult[]=$item->product_name;
+                // "<a href='{{url('single/'.$searchResult=$item->pro_id)  }}'>".$searchResult[]=$item->product_name."</a>";
             }
         }
         return   $searchResult;
+    }
+    public function list()
+    {
+        return view('frontEnd.list.list');
     }
 }

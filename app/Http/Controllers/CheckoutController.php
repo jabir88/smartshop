@@ -60,13 +60,21 @@ class CheckoutController extends Controller
     }
     public function customer_shipping()
     {
-        $cities_name = DB::table('cities')->get();
         $countries_name = DB::table('countries')->get();
         $customer_id=  Session::get('customer_id');
         $ship = Customer::where('customer_id', $customer_id)->first();
 
+        return view('frontEnd.shipping.shippingContent', compact('ship', 'countries_name'));
+    }
+    public function customer_cities(Request $request)
+    {
+        // return    $request->id;
+        $data = DB::table('states')->select('id', 'name')->where('country_id', $request->id)->get();
+        // echo "<pre>";
+        // print_r($data);
+        // echo "</pre>";
 
-        return view('frontEnd.shipping.shippingContent', compact('ship', 'countries_name', 'cities_name'));
+        return response()->json($data);
     }
     public function customer_shipping_save(Request $req)
     {

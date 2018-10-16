@@ -22,7 +22,8 @@ Route::get('/', 'MyController@home')->name('');
 Route::get('/category/{id}', 'MyController@category')->name('');
 Route::get('/codes', 'MyController@codes')->name('');
 Route::get('/contact', 'MyController@contact')->name('');
-Route::get('/search', 'MyController@search')->name('');
+Route::get('/search', 'MyController@search')->name('search');
+Route::get('/list', 'MyController@list')->name('');
 
 Route::post('contact/submit', 'MyController@insertme')->name('');
 Route::get('/single/{pro_id}', 'MyController@single')->name('');
@@ -42,6 +43,10 @@ Route::get('/checkout/logout', 'CheckoutController@customer_logout')->name('');
 Route::post('/checkout/login', 'CheckoutController@customer_login')->name('');
 Route::get('/checkout/shipping', 'CheckoutController@customer_shipping')->name('');
 Route::post('/checkout/shipping/save', 'CheckoutController@customer_shipping_save')->name('');
+
+// cities ajax Routes
+
+Route::get('/find/cities/name', 'CheckoutController@customer_cities')->name('');
 
  // Payment Routes
 

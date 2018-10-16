@@ -64,21 +64,22 @@
 					</div>
 					<div class="form-group">
 						<label for="address" class="cols-sm-2 control-label">Country Name : </label>
-						<select  name="shipping_country">
+						<select  name="shipping_country" id="shipping_country">
 							<option selected>select country name</option>
 						@foreach ($countries_name as $country_name)
-
 							<option value="{{ $country_name->id }}">{{ $country_name->name }}</option>
 						@endforeach
 						</select>
 					</div>
+
 					<div class="form-group">
 						<label for="address" class="cols-sm-2 control-label">City Name : </label>
-						<select  name="shipping_city">
-						<option selected>select city name</option>
-						@foreach ($cities_name as $city_name)
-							{{-- <option value="{{ $city_name->id }}">{{ $city_name->name }}</option> --}}
-						@endforeach
+						<select  name="shipping_city" class="shipping_city">
+						<option value="0"  selected>select city name</option>
+
+						{{-- @foreach ($cities_name as $city_name)
+							<option value="{{ $city_name->id }}">{{ $city_name->name }}</option>
+						@endforeach --}}
 					</select>
 					</div>
 
@@ -90,5 +91,43 @@
 				</div>
 </div>
 </div>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$(document).on('change','#shipping_country',function(){
+			// console.log("hmm its change");
+			var country_id = $(this).val();
+			// console.log(country_id);
 
+			var div=$(this).parent();
+			var op=" ";
+
+			$.ajax({
+				type:'get',
+				url:'{!!URL::to('find/cities/name')!!}',
+				data:{'id':country_id},
+				success:function(data){
+
+					// console.log("success");
+					// console.log(data);
+					// console.log(data.length);
+					op+='<option value="0" selected >chose product</option>';
+					for(var i=0;i<data.length;i++){
+						console.log(data[i].name);
+					//
+					// op+='<option value="'+data[i].id+'">'+data[i].name+'</option>';
+					// div.find('.shipping_city').html(" ");
+					// 		 div.find('.shipping_city').append(op);
+						 }
+				},
+
+				error:function(){
+
+				}
+			});
+
+
+
+		});
+	});
+</script>
 @endsection
