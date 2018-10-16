@@ -113,14 +113,14 @@
 					op+='<option value="0" selected >chose product</option>';
 					for(var i=0;i<data.length;i++){
 						console.log(data[i].name);
-					//
+
 					// op+='<option value="'+data[i].id+'">'+data[i].name+'</option>';
 					// div.find('.shipping_city').html(" ");
 					// 		 div.find('.shipping_city').append(op);
 						 }
 				},
-
 				error:function(){
+					console.log("Morr");
 
 				}
 			});

@@ -69,11 +69,13 @@ class CheckoutController extends Controller
     public function customer_cities(Request $request)
     {
         // return    $request->id;
+        // $data = DB::table('states')->select('id', 'name')->where('country_id', 2)->get();
         $data = DB::table('states')->select('id', 'name')->where('country_id', $request->id)->get();
         // echo "<pre>";
         // print_r($data);
         // echo "</pre>";
 
+        // return $data;
         return response()->json($data);
     }
     public function customer_shipping_save(Request $req)
