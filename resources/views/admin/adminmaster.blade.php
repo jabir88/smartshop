@@ -28,7 +28,7 @@
     <!-- Morris Charts CSS -->
     <link href="{{asset('admins/')}}/vendor/morrisjs/morris.css" rel="stylesheet">
     {{-- <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet"> --}}
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.35/css/uikit.min.css" rel="stylesheet">
+    <link href="{{asset('admins/')}}/dist/css/uikit.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/1.10.19/css/dataTables.uikit.min.css" rel="stylesheet">
     {{-- <link href="https://cdn.datatables.net/buttons/1.5.2/css/buttons.dataTables.min.css" rel="stylesheet"> --}}
 
