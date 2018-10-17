@@ -48,6 +48,10 @@ Route::post('/checkout/shipping/save', 'CheckoutController@customer_shipping_sav
 
 Route::get('/find/cities/name', 'CheckoutController@customer_cities')->name('');
 
+// Backup Route
+
+Route::get('/backup', 'CommandController@backup')->name('backup');
+
  // Payment Routes
 
 Route::get('/checkout/payment', 'PaymentController@payment_page')->name('');

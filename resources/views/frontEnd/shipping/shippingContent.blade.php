@@ -65,7 +65,7 @@
 					<div class="form-group">
 						<label for="address" class="cols-sm-2 control-label">Country Name : </label>
 						<select  name="shipping_country" id="shipping_country">
-							<option selected>select country name</option>
+							<option selected>Select Country Name</option>
 						@foreach ($countries_name as $country_name)
 							<option value="{{ $country_name->id }}">{{ $country_name->name }}</option>
 						@endforeach
@@ -74,7 +74,7 @@
 
 					<div class="form-group">
 						<label for="address" class="cols-sm-2 control-label">City Name : </label>
-						<select  name="shipping_city" class="shipping_city">
+						<select  name="shipping_city" id ="shipping_city" class="shipping_city">
 						<option value="0"  selected>select city name</option>
 
 						{{-- @foreach ($cities_name as $city_name)
@@ -94,28 +94,19 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		$(document).on('change','#shipping_country',function(){
-			// console.log("hmm its change");
 			var country_id = $(this).val();
-			// console.log(country_id);
-
-			var div=$(this).parent();
 			var op=" ";
-
 			$.ajax({
 				type:'get',
 				url:'{!!URL::to('find/cities/name')!!}',
 				data:{'id':country_id},
 				success:function(data){
-
-					// console.log("success");
-					// console.log(data);
-					// console.log(data.length);
-					op+='<option value="0" selected >chose product</option>';
+					op+='<option value="0" selected >Select City Name</option>';
 					for(var i=0;i<data.length;i++){
 						console.log(data[i].name);
 
-					// op+='<option value="'+data[i].id+'">'+data[i].name+'</option>';
-					// div.find('.shipping_city').html(" ");
+					op+='<option value="'+data[i].id+'">'+data[i].name+'</option>';
+					$('#shipping_city').html(op);
 					// 		 div.find('.shipping_city').append(op);
 						 }
 				},

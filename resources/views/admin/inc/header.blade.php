@@ -10,6 +10,13 @@
 <!-- /.navbar-header -->
 
 <ul class="nav navbar-top-links navbar-right">
+  <li class="text-left">
+    <a href="{{ route('backup') }}">
+      Backup
+{{-- <button type="button" name="Backup">Backup</button> --}}
+
+    </a>
+  </li>
     @if(Auth::user()->role_id <= 4)
     <li class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -46,6 +53,7 @@
     </li>
     @endif
     <!-- /.dropdown -->
+
     <li class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
             <i class="fa fa-tasks fa-fw"></i> <i class="fa fa-caret-down"></i>
