@@ -31,6 +31,8 @@ class User extends Authenticatable
     // {
     //   return $this->token === null;
     // }
-
-
+    public function RoleName()
+    {
+        return $this->belongsTO('App\Userrole', 'role_id', 'role_id');
+    }
 }
