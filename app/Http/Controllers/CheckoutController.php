@@ -19,16 +19,16 @@ class CheckoutController extends Controller
     }
     public function customer_register(Request $req)
     {
-        $customer = array();
-        $customer['customer_firstname'] = $req->customer_firstname;
-        $customer['customer_lastname'] = $req->customer_lastname;
-        $customer['customer_email'] = $req->customer_email;
-        $customer['customer_phone'] = $req->customer_phone;
-        $customer['customer_password'] = md5($req->customer_password);
-        $customer['customer_address'] = $req->customer_address;
-        $customer['created_at'] = Carbon::now();
+        $customer_id = DB::table('customers')->insertGetId([
+        'customer_firstname'  => $req->customer_firstname,
+        'customer_lastname'  => $req->customer_lastname,
+        'customer_email'  => $req->customer_email,
+        'customer_phone'  => $req->customer_phone,
+        'customer_password'  => md5($req->customer_password),
+        'customer_address'  => $req->customer_address,
+        'created_at'=>Carbon::now(),
 
-        $customer_id = DB::table('customers')->insertGetId($customer);
+        ]);
 
         Session::put('customer_id', $customer_id);
         Session::put('customer_name', $req->customer_firstname);

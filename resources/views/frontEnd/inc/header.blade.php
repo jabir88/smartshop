@@ -2,7 +2,7 @@
 <div class="header">
 	<div class="container">
 		<ul>
-			<li><span class="glyphicon glyphicon-time" aria-hidden="true"></span>Free and Fast Delivery</li>
+			<li><span class="glyphicon glyphicon-time" aria-hidden="true"></span>Free And Fast Delivery</li>
 			<li><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>Free shipping On all orders {{Session::get('customer_id')}}</li>
 			<li>
 				@if(Session::get('customer_id') == null)

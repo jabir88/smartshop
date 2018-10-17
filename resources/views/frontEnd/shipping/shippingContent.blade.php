@@ -103,11 +103,9 @@
 				success:function(data){
 					op+='<option value="0" selected >Select City Name</option>';
 					for(var i=0;i<data.length;i++){
-						console.log(data[i].name);
-
-					op+='<option value="'+data[i].id+'">'+data[i].name+'</option>';
-					$('#shipping_city').html(op);
-					// 		 div.find('.shipping_city').append(op);
+						// console.log(data[i].name);
+						op+='<option value="'+data[i].id+'">'+data[i].name+'</option>';
+						$('#shipping_city').html(op);
 						 }
 				},
 				error:function(){

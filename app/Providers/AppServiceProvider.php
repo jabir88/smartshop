@@ -24,13 +24,13 @@ class AppServiceProvider extends ServiceProvider
 
             $view->with(compact('countMess', 'countMessages'));
         });
-        View::composer('frontEnd.inc.nav', function ($view) {
-            $cate = Category::where('pub_status', '1')->orderBy('id', 'ASC')->get();
-            $view->with(compact('cate'));
-        });
         View::composer('frontEnd.inc.header', function ($view) {
             $cate2 = Category::where('pub_status', '1')->orderBy('id', 'ASC')->get();
             $view->with(compact('cate2'));
+        });
+        View::composer('frontEnd.inc.nav', function ($view) {
+            $cate = Category::where('pub_status', '1')->orderBy('id', 'ASC')->get();
+            $view->with(compact('cate'));
         });
         Schema::defaultStringLength(191);
     }

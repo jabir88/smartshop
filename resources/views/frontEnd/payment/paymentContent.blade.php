@@ -121,7 +121,7 @@
 		@csrf
 		<div class="form-check " style="margin:20px 0;">
       <label class="form-check-label" for="cash">
-        <input type="radio" class="form-check-input" name="payment_type" value="cash" id="cash" name="optradio" checked style="margin-right : 20px;">Cash On Delivery
+        <input type="radio" checked class="form-check-input" name="payment_type" value="cash" id="cash" name="optradio" checked style="margin-right : 20px;">Cash On Delivery
       </label>
     </div>
     <div class="form-check " style="margin:20px 0;">
