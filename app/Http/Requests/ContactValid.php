@@ -27,6 +27,7 @@ class ContactValid extends FormRequest
           'Name' =>'required|min:3|max:50',
           'Email' =>'required|email',
           'Message' =>'required',
+           // 'g-recaptcha-response' => 'required|captcha'
         ];
     }
     public function messages()

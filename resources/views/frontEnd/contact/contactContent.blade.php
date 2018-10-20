@@ -109,7 +109,15 @@
 								</span>
 						@endif
 					</div>
+					{{-- {!! app('captcha')->render(); !!} --}}
+				{{-- @captcha --}}
+				{{-- 		@if ($errors->has('g-recaptcha-response'))
+						<span class="invalid-feedback" role="alert">
+							<strong>{{ $errors->first('g-recaptcha-response') }}</strong>
+						</span>
+					@endif --}}
 					<div class="my-2">
+
 					<input type="submit" value="Submit">
 				</div>
 				</div>
