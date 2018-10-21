@@ -22,7 +22,8 @@ Route::get('/', 'MyController@home')->name('');
 Route::get('/category/{id}', 'MyController@category')->name('');
 Route::get('/codes', 'MyController@codes')->name('');
 Route::get('/contact', 'MyController@contact')->name('');
-Route::get('/search', 'MyController@search')->name('search');
+// Route::get('/search', 'MyController@search')->name('search');
+Route::get('/search', 'SearchController@search')->name('search');
 Route::get('/list', 'MyController@list')->name('');
 
 Route::post('contact/submit', 'MyController@insertme')->name('');

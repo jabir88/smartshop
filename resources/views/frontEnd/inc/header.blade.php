@@ -27,8 +27,10 @@
 		<div class="col-md-6 header-middle">
 			<form>
 				<div class="search">
-					<input type="search" value="Search" name="searchbar" id="searchbar" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}" required="">
+					<input type="text" class="form-controller" id="search" name="search">
+					{{-- <input type="search" value="Search" name="searchbar" id="searchbar" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}" required=""> --}}
 				</div>
+
 				<div class="section_room">
 					<select id="country" onChange="" class="frm-field required">
 						<option value="null" selected>All categories</option>
@@ -36,7 +38,27 @@
 
 							<option value="{{ $cate->id }}">{{ $cate->category_name }}</option>
 						@endforeach
+					</div>
 
+					<div class="sear-sub">
+						<input type="submit" value=" ">
+					</div>
+
+
+<ul id="myUL">
+
+</ul>
+
+					{{-- <table class="table table-bordered table-hover">
+				<thead>
+				</thead>
+				<tbody>
+
+				</tbody>
+				</table> --}}
+					<div class="clearfix"></div>
+				</form>
+			</div>
 					<script type="text/javascript">
 						function myNewFunction(sel) {
 							var text = sel.options[sel.selectedIndex].text;
@@ -51,14 +73,7 @@
 						// });
 					</script>
 					</select>
-				</div>
 
-				<div class="sear-sub">
-					<input type="submit" value=" ">
-				</div>
-				<div class="clearfix"></div>
-			</form>
-		</div>
 		<div class="col-md-3 header-right footer-bottom">
 			<ul>
 				<li><a href="#" class="use1" data-toggle="modal" data-target="#myModal4"><span>Login</span></a>
@@ -74,3 +89,37 @@
 	</div>
 </div>
 <!-- //header-bot -->
+
+<script type="text/javascript">
+  $('#search').on('keyup',function(){
+  var search=$(this).val();
+  // console.log(value);
+  // $.ajaxSetup({
+  //   headers: {
+  //     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+  //   }
+  // });
+
+    $.ajax({
+
+      type : 'get',
+
+      url : '{{URL::to('search')}}',
+
+      data:{search:search},
+
+      success:function(data){
+				// console.log(data);
+      $('#myUL').html(data);
+      // $('tbody').html(data);
+    }
+  });
+});
+
+</script>
+
+<script type="text/javascript">
+
+$.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
+
+</script>

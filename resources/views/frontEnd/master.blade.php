@@ -26,6 +26,32 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- //pignose css -->
 <link href="{{asset('front/css/style.css')}}" rel="stylesheet" type="text/css" media="all" />
 <!-- js -->
+<style media="screen">
+
+#search {
+  
+}
+#myUL {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+#myUL li a {
+  border: 1px solid #ddd;
+  margin-top: -1px; /* Prevent double borders */
+  background-color: #fff;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 18px;
+  color: black;
+  display: block
+}
+
+#myUL li a:hover:not(.header) {
+  background-color: #f6f6f6;
+}
+</style>
 <script type="text/javascript" src="{{asset('front/js/jquery-2.1.4.min.js')}}"></script>
 <!-- single -->
 <script src="{{asset('front/js/sweetalert.min.js')}}"></script>
