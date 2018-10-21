@@ -162,6 +162,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         AlbertCht\InvisibleReCaptcha\InvisibleReCaptchaServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
     ],
 
     /*
@@ -214,6 +215,7 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
         'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+        'Image' => Intervention\Image\Facades\Image::class,
     ],
 
 ];

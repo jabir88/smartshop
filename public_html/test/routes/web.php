@@ -24,6 +24,7 @@ Route::get('/codes', 'MyController@codes')->name('');
 Route::get('/contact', 'MyController@contact')->name('');
 Route::get('/search', 'MyController@search')->name('search');
 Route::get('/list', 'MyController@list')->name('');
+Route::get('/config', 'MyController@config')->name('');
 
 Route::post('contact/submit', 'MyController@insertme')->name('');
 Route::get('/single/{pro_id}', 'MyController@single')->name('');
