@@ -23,8 +23,12 @@ class SearchController extends Controller
                 foreach ($products as $product) {
                     $output.='<li><a href="http://localhost:8000/single/'.$product->pro_id .'">'.$product->product_name.'</a></li>';
                 }
-                return Response($output);
+                // return Response($output);
             }
+            if (empty($products)) {
+                $output.='<li>No Item Found!</li>';
+            }
+            return Response($output);
             // if ($products) {
             //     foreach ($products as $product) {
             //         $output.='<a href="http://localhost:8000/single/'.$product->pro_id. '"><tr>'.
