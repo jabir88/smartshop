@@ -57,34 +57,6 @@
 				<div class="clearfix"></div>
 			</form>
 		</div>
-
-
-
-					{{-- <table class="table table-bordered table-hover">
-				<thead>
-				</thead>
-				<tbody>
-
-				</tbody>
-				</table> --}}
-			</form>
-					<div class="clearfix"></div>
-			</div>
-					<script type="text/javascript">
-						function myNewFunction(sel) {
-							var text = sel.options[sel.selectedIndex].text;
-
-						}
-
-						// $(document).ready(function(){
-							// $("#country option").click(function(){
-							//  var h =	$("#country option:selected").text();
-							//  alert(h);
-							// });
-						// });
-					</script>
-					</select>
-
 		<div class="col-md-3 header-right footer-bottom">
 			<ul>
 				<li><a href="#" class="use1" data-toggle="modal" data-target="#myModal4"><span>Login</span></a>
