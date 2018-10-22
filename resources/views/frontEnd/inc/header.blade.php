@@ -24,13 +24,18 @@
 		<div class="col-md-3 header-left">
 			<h1><a href="{{url('/')}}"><img src="{{asset('front/images/')}}/logo3.jpg"></a></h1>
 		</div>
+
+
+
+
+
+
+
 		<div class="col-md-6 header-middle">
 			<form>
 				<div class="search">
-					<input type="text" class="form-controller" id="search" name="search">
-					{{-- <input type="search" value="Search" name="searchbar" id="searchbar" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}" required=""> --}}
+					<input type="search"  name="search" id="search" required="" >
 				</div>
-
 				<div class="section_room">
 					<select id="country" onChange="" class="frm-field required">
 						<option value="null" selected>All categories</option>
@@ -38,16 +43,22 @@
 
 							<option value="{{ $cate->id }}">{{ $cate->category_name }}</option>
 						@endforeach
+					</select>
 					</div>
+				<div class="sear-sub">
+					<input type="submit" value=" ">
+				</div>
+				<div class="">
+					<ul id="myUL">
 
-					<div class="sear-sub">
-						<input type="submit" value=" ">
-					</div>
+					</ul>
+					{{-- <input type="submit" value=" "> --}}
+				</div>
+				<div class="clearfix"></div>
+			</form>
+		</div>
 
 
-<ul id="myUL">
-
-</ul>
 
 					{{-- <table class="table table-bordered table-hover">
 				<thead>
@@ -56,8 +67,8 @@
 
 				</tbody>
 				</table> --}}
+			</form>
 					<div class="clearfix"></div>
-				</form>
 			</div>
 					<script type="text/javascript">
 						function myNewFunction(sel) {
