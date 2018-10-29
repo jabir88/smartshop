@@ -74,6 +74,20 @@
                 <!-- /.nav-second-level -->
             </li>
             @endif
+
+            {{-- <li>
+                <a href="#"><i class="glyphicon glyphicon-shopping-cart  "></i> Settings<span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li>
+                        <a href="{{url('admin/password/change')}}">Password Change</a>
+                    </li>
+                    <li>
+                        <a href="{{url('admin/manage/setting')}}">Manage Setting</a>
+                    </li>
+                </ul>
+                <!-- /.nav-second-level -->
+            </li> --}}
+
               @if(Auth::user()->role_id == 1)
             <li>
               <a href="{{url('admin/all-users')}}">User details</a>
@@ -87,10 +101,14 @@
               <a href="{{url('admin/contact-message')}}">Contact-Message</a>
             </li>
             @endif
-            @if (empty(Auth::user()->provider_id))
+            @if (!empty(Auth::user()->password))
 
             <li>
               <a href="{!! route('password.change') !!}">Password Change</a>
+            </li>
+          @else
+            <li>
+              <a href="{!! route('password.set') !!}">Set Password</a>
             </li>
           @endif
             <li>

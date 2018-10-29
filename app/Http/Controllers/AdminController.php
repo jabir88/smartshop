@@ -38,6 +38,32 @@ class AdminController extends Controller
     {
         return view('admin.password.passwordchange');
     }
+    public function setpassword()
+    {
+        return view('admin.password.passwordset');
+    }
+
+    public function setpasswordsubmite(Request $request)
+    {
+        $request -> validate([
+          'new_pass' => 'required|string|min:6',
+          'retype_pass' => 'required|same:new_pass',
+
+        ], [
+          'new_pass.required' => "Please Enter Your New Password!",
+          'new_pass.string' => "Invalid New Password!",
+          'new_pass.min' => "New Password should be minimum 6 characters!",
+          'retype_pass.required' => "Please Enter Your Re-type Password!",
+          'retype_pass.same' => "Password Doesn't Match!",
+        ]);
+
+        $new_pass = bcrypt($request->new_pass);
+
+        User::where('id', Auth::user()->id)->update([
+                    'password' => $new_pass
+                  ]);
+        return back()->with('status', "Password Set Successfully");
+    }
     public function changepasswordsubmite(Request $request)
     {
         $request -> validate([

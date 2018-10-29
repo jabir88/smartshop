@@ -26,7 +26,7 @@
 					<!-- //FlexSlider-->
 					<ul class="slides">
 						<li data-thumb="{{asset('/'.$singlepro->product_img)}}">
-							<div class="thumb-image"> <img src="{{asset('/')}}.{{ $singlepro->product_img}}" data-imagezoom="true" class="img-responsive"> </div>
+							<div class="thumb-image"> <img src="{{asset('/'.$singlepro->product_img)}}" data-imagezoom="true" class="img-responsive"> </div>
 							{{-- <div class="thumb-image"> <img src="{{asset('/'.$singlepro->product_img)}}" data-imagezoom="true" class="img-responsive"> </div> --}}
 						</li>
 						<li data-thumb="{{asset('/'.$singlepro->product_img)}}">

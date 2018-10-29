@@ -21,7 +21,7 @@ class SearchController extends Controller
             // print_r($products);
             if ($products) {
                 foreach ($products as $product) {
-                    $output.='<li><a href="http://localhost:8000/single/'.$product->pro_id .'">'.
+                    $output.='<li><a href="'.url("/single/").'/'.$product->pro_id .'">'.
                     // '<img src="{{ asset('/') }}'.$product->product_img.'" alt="">'
 
                     $product->product_name

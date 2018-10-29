@@ -64,5 +64,7 @@ class Kernel extends HttpKernel
         'author' => \App\Http\Middleware\Author::class,
         'editor' => \App\Http\Middleware\Editor::class,
         'member' => \App\Http\Middleware\Member::class,
+        'password' => \App\Http\Middleware\PasswordMiddleware::class,
+        'nopassword' => \App\Http\Middleware\NoPasswordMiddleware::class,
     ];
 }

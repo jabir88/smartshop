@@ -81,8 +81,12 @@ Route::get('admin/contact-message', 'ContactController@contactmess')->name('');
 Route::get('admin/contact-message/mark/{conus_id}', 'ContactController@contactmark')->name('');
 
 //password change
-Route::get('admin/password/change', 'AdminController@changepassword')->name('password.change');
+
+Route::get('admin/password/change', 'AdminController@changepassword')->name('password.change')->middleware('password');
 Route::post('admin/password/change/submit', 'AdminController@changepasswordsubmite')->name('password.change.submit');
+
+Route::get('admin/password/set', 'AdminController@setpassword')->name('password.set')->middleware('nopassword');
+Route::post('admin/password/set/submit', 'AdminController@setpasswordsubmite')->name('password.set.submit');
 
 Route::get('admin/all-users', 'AdminController@alluser')->name('');
 

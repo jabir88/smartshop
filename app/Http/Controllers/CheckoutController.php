@@ -19,6 +19,16 @@ class CheckoutController extends Controller
     }
     public function customer_register(Request $req)
     {
+        $this->validate($req, [
+          'customer_firstname' => 'required|min:3|max:25',
+          'customer_lastname' => 'required|min:3',
+          'customer_email' => 'required|email|unique:customers',
+          'customer_phone' => 'required|unique:customers',
+          'customer_password' => 'required|min:6',
+          'customer_confirm' => 'required|same:customer_password',
+          'customer_address' => 'required|min:8',
+        ]);
+        // return $req->all();
         $customer_id = DB::table('customers')->insertGetId([
         'customer_firstname'  => $req->customer_firstname,
         'customer_lastname'  => $req->customer_lastname,
@@ -41,6 +51,7 @@ class CheckoutController extends Controller
     }
     public function customer_login(Request $req)
     {
+        // return $req->all();
         $log_email =$req->customer_email;
         $log_pw =md5($req->customer_password);
         $result = DB::table('customers')->where('customer_email', $log_email)
@@ -55,7 +66,7 @@ class CheckoutController extends Controller
             Session::put('customer_name', $customer_name);
             return redirect('/checkout/shipping');
         } else {
-            return redirect()->back();
+            return redirect()->back()->with('status', 'Email or Password is Wrong!');
         }
     }
     public function customer_shipping()

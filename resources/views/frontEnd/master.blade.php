@@ -27,7 +27,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <link href="{{asset('front/css/style.css')}}" rel="stylesheet" type="text/css" media="all" />
 <!-- js -->
 <style media="screen">
-
+.field-icon {
+  float: right;
+  margin-left: -25px;
+  margin-top: 10px;
+  position: relative;
+  z-index: 2;
+}
+.invalid-feedback{
+  color: red;
+}
 #search {
 position: relative;
 }
@@ -100,22 +109,43 @@ position: relative;
 								<div class="login">
 									<div class="login-bottom">
 										<h3>Sign up for free</h3>
-										<form>
-
+										<form method="post" action="{{url('/checkout/register')}}">
+    @csrf
 											<div class="sign-up">
 												<h4>Email :</h4>
-												<input type="text" value="Type here" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Type here';}" required="">
+												<input type="text"  value="{{ old('customer_email') }}" name="customer_email"   placeholder="Enter your Email" >
 											</div>
+                      @if ($errors->has('customer_email'))
+                          <span class="invalid-feedback" role="alert">
+                              <strong>{{ $errors->first('customer_email') }}</strong>
+                          </span>
+                      @endif
 											<div class="sign-up">
 												<h4>Password :</h4>
-												<input type="password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}" required="">
+												{{-- <input type="password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}" required=""> --}}
+                        <input  type="password"  value="{{ old('customer_password') }}" name="customer_password" >
+                        {{-- <span toggle="#customer_passwordsss" class="fa fa-fw fa-eye field-icon toggle-password"></span> --}}
 
 											</div>
+                      @if ($errors->has('customer_password'))
+                        <span class="invalid-feedback" role="alert">
+                          <strong>{{ $errors->first('customer_password') }}</strong>
+                        </span>
+                      @endif
 											<div class="sign-up">
 												<h4>Re-type Password :</h4>
-												<input type="password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}" required="">
+                        {{-- <input id="customer_passwordsss" type="password" value="{{ old('customer_password') }}" name="customer_password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}"  > --}}
+                        {{-- <span toggle="#customer_passwordsss" class="fa fa-fw fa-eye field-icon toggle-password"></span> --}}
+												<input  type="password" value="{{ old('customer_confirm') }}" name="customer_confirm" >
+
+                        {{-- <span toggle="#confirms" class="fa fa-fw fa-eye field-icon toggle-password"></span> --}}
 
 											</div>
+                      @if ($errors->has('customer_confirm'))
+                        <span class="invalid-feedback" role="alert">
+                          <strong>{{ $errors->first('customer_confirm') }}</strong>
+                        </span>
+                      @endif
 											<div class="sign-up">
 												<input type="submit" value="REGISTER NOW" >
 											</div>
@@ -124,14 +154,18 @@ position: relative;
 									</div>
 									<div class="login-right">
 										<h3>Sign in with your account</h3>
-										<form>
+										<form method="post" action="{{url('/checkout/login')}}">
+                      @csrf
 											<div class="sign-in">
 												<h4>Email :</h4>
-												<input type="text" value="Type here" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Type here';}" required="">
+												<input type="text" class="form-control" name="customer_email" >
 											</div>
 											<div class="sign-in">
 												<h4>Password :</h4>
-												<input type="password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}" required="">
+                        <input id="password-fieldsd" type="password" name="customer_password" >
+                       {{-- <span toggle="#password-fieldsd" class="fa fa-fw fa-eye field-icon toggle-password"></span> --}}
+
+												{{-- <input type="password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}" required=""> --}}
 												<a href="#">Forgot password?</a>
 											</div>
 											<div class="single-bottom">
@@ -140,6 +174,7 @@ position: relative;
 											</div>
 
 											<div class="sign-in">
+                        {{-- <button type="submit" name="login" class="btn btn-primary btn-lg btn-block login-button">Login</button> --}}
 												<input type="submit" value="SIGNIN" >
 											</div>
 										</form>
