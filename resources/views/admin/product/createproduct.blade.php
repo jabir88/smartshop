@@ -1,5 +1,8 @@
 @extends('admin.adminmaster')
 
+@section('add_css')
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+@endsection
 @section('myContent')
 
 <div id="page-wrapper">
@@ -24,7 +27,8 @@
         @endif
         <div class="form-group">
           <label  style="display: block; color:#3895D3; font-weight:700;" >Category Name</label>
-          <select class="form-control" value="{{old('cate_name')}}" name="cate_name">
+
+          <select class="form-control select_class" value="{{old('cate_name')}}" name="cate_name">
             <option selected>Select Category</option>
             @foreach($categories as $category )
 
@@ -40,7 +44,7 @@
         @endif
         <div class="form-group">
           <label  style="display: block; color:#3895D3; font-weight:700;" >Manufacturer Name</label>
-          <select class="form-control" value="{{old('manu_name')}}" name="manu_name">
+          <select class="form-control select_class" value="{{old('manu_name')}}" name="manu_name">
             <option selected>Select Manufacturer</option>
             @foreach($manufacturers as $manufacturer )
 
@@ -121,4 +125,16 @@
       </div>
     </div>
   </div>
+@endsection
+
+@section('script_here')
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+        $('.select_class').select2({
+          placeholder: "Select One",
+   allowClear: true
+        });
+    });
+  </script>
 @endsection

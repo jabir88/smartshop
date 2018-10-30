@@ -23,6 +23,7 @@
     <link href="{{asset('admins/')}}/vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
+    @yield('add_css')
     <link href="{{asset('admins/')}}/dist/css/sb-admin-2.css" rel="stylesheet">
 
     <!-- Morris Charts CSS -->
@@ -74,6 +75,7 @@
     <script src="{{asset('admins/')}}/data/morris-data.js"></script>
 
     <!-- Custom Theme JavaScript -->
+
     <script src="{{asset('admins/')}}/dist/js/sb-admin-2.js"></script>
 
 @yield('script_here')

@@ -46,20 +46,7 @@
                 <!-- /.nav-second-level -->
             </li>
             @endif
-              @if(Auth::user()->role_id <= 2)
-            <li>
-                <a href="#"><i class="fa fa-gears  fa-fw"></i> Banner<span class="fa arrow"></span></a>
-                <ul class="nav nav-second-level">
-                    <li>
-                        <a href="{{url('admin/banner/add')}}">Add Banner</a>
-                    </li>
-                    <li>
-                        <a href="{{url('admin/banner/manage')}}">Manage Banner</a>
-                    </li>
-                </ul>
-                <!-- /.nav-second-level -->
-            </li>
-            @endif
+
               @if(Auth::user()->role_id <= 4)
             <li>
                 <a href="#"><i class="glyphicon glyphicon-shopping-cart  "></i> Product<span class="fa arrow"></span></a>
@@ -74,6 +61,20 @@
                 <!-- /.nav-second-level -->
             </li>
             @endif
+            @if(Auth::user()->role_id <= 2)
+          <li>
+              <a href="#"><i class="fa fa-gears  fa-fw"></i> Banner<span class="fa arrow"></span></a>
+              <ul class="nav nav-second-level">
+                  <li>
+                      <a href="{{url('admin/banner/add')}}">Add Banner</a>
+                  </li>
+                  <li>
+                      <a href="{{url('admin/banner/manage')}}">Manage Banner</a>
+                  </li>
+              </ul>
+              <!-- /.nav-second-level -->
+          </li>
+          @endif
 
             {{-- <li>
                 <a href="#"><i class="glyphicon glyphicon-shopping-cart  "></i> Settings<span class="fa arrow"></span></a>
