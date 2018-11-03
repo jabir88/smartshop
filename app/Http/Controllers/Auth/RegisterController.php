@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Notifications\RegisterNotification;
+use App\Notifications\VerifyNotification;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
@@ -63,11 +65,20 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
-            'email' => $data['email'],
+            'email' => strtolower(trim($data['email'])),
             'password' => Hash::make($data['password']),
             'address' => $data['address'],
+            'email_verification_token' => str_random(24),
         ]);
+        $user = User::where('id', $user->id)->first();
+
+        $user->notify(new VerifyNotification($user));
+        $admins = User::where('role_id',1)->get();
+        foreach ($admins as $admin) {
+            $admin->notify(new RegisterNotification($user));
+        }
+        return $user;
     }
 }

@@ -138,57 +138,75 @@
             <i class="fa fa-bell fa-fw"></i> <i class="fa fa-caret-down"></i>
         </a>
         <ul class="dropdown-menu dropdown-alerts">
+            @if(Auth::user()->role_id = 1)
             <li>
                 <a href="#">
+                        @php
+                            $user =App\User::find(Auth::user()->id);
+                        @endphp
                     <div>
-                        <i class="fa fa-comment fa-fw"></i> New Comment
+                        <i class="fa fa-user-md"></i>
+                        @foreach ($user->notifications as $notification)
+                        {{$notification->data['username']}} Is Register .
+
+                        @endforeach
+
                         <span class="pull-right text-muted small">4 minutes ago</span>
                     </div>
                 </a>
             </li>
-            <li class="divider"></li>
-            <li>
-                <a href="#">
-                    <div>
-                        <i class="fa fa-twitter fa-fw"></i> 3 New Followers
-                        <span class="pull-right text-muted small">12 minutes ago</span>
-                    </div>
-                </a>
-            </li>
-            <li class="divider"></li>
-            <li>
-                <a href="#">
-                    <div>
-                        <i class="fa fa-envelope fa-fw"></i> Message Sent
-                        <span class="pull-right text-muted small">4 minutes ago</span>
-                    </div>
-                </a>
-            </li>
-            <li class="divider"></li>
-            <li>
-                <a href="#">
-                    <div>
-                        <i class="fa fa-tasks fa-fw"></i> New Task
-                        <span class="pull-right text-muted small">4 minutes ago</span>
-                    </div>
-                </a>
-            </li>
-            <li class="divider"></li>
-            <li>
-                <a href="#">
-                    <div>
-                        <i class="fa fa-upload fa-fw"></i> Server Rebooted
-                        <span class="pull-right text-muted small">4 minutes ago</span>
-                    </div>
-                </a>
-            </li>
-            <li class="divider"></li>
-            <li>
-                <a class="text-center" href="#">
-                    <strong>See All Alerts</strong>
-                    <i class="fa fa-angle-right"></i>
-                </a>
-            </li>
+            @endif
+            {{--<li>--}}
+                {{--<a href="#">--}}
+                    {{--<div>--}}
+                        {{--<i class="fa fa-comment fa-fw"></i> New User--}}
+                        {{--<span class="pull-right text-muted small">4 minutes ago</span>--}}
+                    {{--</div>--}}
+                {{--</a>--}}
+            {{--</li>--}}
+            {{--<li class="divider"></li>--}}
+            {{--<li>--}}
+                {{--<a href="#">--}}
+                    {{--<div>--}}
+                        {{--<i class="fa fa-twitter fa-fw"></i> 3 New Followers--}}
+                        {{--<span class="pull-right text-muted small">12 minutes ago</span>--}}
+                    {{--</div>--}}
+                {{--</a>--}}
+            {{--</li>--}}
+            {{--<li class="divider"></li>--}}
+            {{--<li>--}}
+                {{--<a href="#">--}}
+                    {{--<div>--}}
+                        {{--<i class="fa fa-envelope fa-fw"></i> Message Sent--}}
+                        {{--<span class="pull-right text-muted small">4 minutes ago</span>--}}
+                    {{--</div>--}}
+                {{--</a>--}}
+            {{--</li>--}}
+            {{--<li class="divider"></li>--}}
+            {{--<li>--}}
+                {{--<a href="#">--}}
+                    {{--<div>--}}
+                        {{--<i class="fa fa-tasks fa-fw"></i> New Task--}}
+                        {{--<span class="pull-right text-muted small">4 minutes ago</span>--}}
+                    {{--</div>--}}
+                {{--</a>--}}
+            {{--</li>--}}
+            {{--<li class="divider"></li>--}}
+            {{--<li>--}}
+                {{--<a href="#">--}}
+                    {{--<div>--}}
+                        {{--<i class="fa fa-upload fa-fw"></i> Server Rebooted--}}
+                        {{--<span class="pull-right text-muted small">4 minutes ago</span>--}}
+                    {{--</div>--}}
+                {{--</a>--}}
+            {{--</li>--}}
+            {{--<li class="divider"></li>--}}
+            {{--<li>--}}
+                {{--<a class="text-center" href="#">--}}
+                    {{--<strong>See All Alerts</strong>--}}
+                    {{--<i class="fa fa-angle-right"></i>--}}
+                {{--</a>--}}
+            {{--</li>--}}
         </ul>
         <!-- /.dropdown-alerts -->
     </li>

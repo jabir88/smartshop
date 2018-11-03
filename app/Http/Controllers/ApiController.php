@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Notifications\VerifyNotification;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
@@ -21,9 +22,9 @@ class ApiController extends Controller
       $user = Socialite::driver('github')->user();
 
       // $user->token;
-      print_r("<pre>");
-      print_r($user);
-      print_r("</pre>");
+//      print_r("<pre>");
+//      print_r($user);
+//      print_r("</pre>");
   }
 
   public function redirectToProviderGoogle()
@@ -52,12 +53,18 @@ public function findOrCreateUser($user)
   if ($authuser) {
     return $authuser;
   }else {
-    return User::create([
+      $user_all =  User::create([
       'name'=>$user->name,
       'email'=>$user->email,
       'provider'=>'google',
+        'email_verification_token' => str_random(24),
       'provider_id'=>$user->id,
     ]);
+      $user = User::where('id', $user_all->id)->first();
+
+      $user->notify(new VerifyNotification($user));
+
+      return $user;
   }
 }
   // public function redirectToProviderFacebook()

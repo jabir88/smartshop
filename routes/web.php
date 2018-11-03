@@ -16,7 +16,7 @@
 // });
 
 Auth::routes();
-// Route::get('/home', 'HomeController@index')->name('home');
+ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/', 'MyController@home')->name('');
 Route::get('/category/{id}', 'MyController@category')->name('');
@@ -73,12 +73,17 @@ Route::get('auth/google', 'ApiController@redirectToProviderGoogle');
 Route::get('auth/google/callback', 'ApiController@handleProviderCallbackGoogle');
 
 
-// admin routes
+// Admin routes
 
 Route::get('/admin', 'AdminController@dashme')->name('');
 Route::get('/admin/permission', 'AdminController@permission')->name('');
 Route::get('admin/contact-message', 'ContactController@contactmess')->name('');
 Route::get('admin/contact-message/mark/{conus_id}', 'ContactController@contactmark')->name('');
+
+// Verify Email
+
+Route::get('/admin/verify', 'AdminController@verify')->name('verify');
+Route::get('/admin/verification-link/{token}', 'AdminController@token')->name('token');
 
 //password change
 
