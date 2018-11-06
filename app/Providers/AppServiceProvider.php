@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\ServiceProvider;
 use View;
 use Illuminate\Support\Facades\Schema;
@@ -31,6 +32,10 @@ class AppServiceProvider extends ServiceProvider
         View::composer('frontEnd.inc.nav', function ($view) {
             $cate = Category::where('pub_status', '1')->orderBy('id', 'ASC')->get();
             $view->with(compact('cate'));
+        });
+        View::composer('admin.inc.header', function ($view) {
+            $notification = DB::table('notifications')->count();
+            $view->with(compact('notification'));
         });
         Schema::defaultStringLength(191);
     }

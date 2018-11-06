@@ -8,6 +8,7 @@ use Carbon\Carbon;
 use Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
@@ -45,6 +46,13 @@ class AdminController extends Controller
     {
 
         return redirect('/admin');
+    }
+    public function markNotiRead($id)
+    {
+        DB::table('notifications')->where('id',$id)->update([
+            'read_at' => Carbon::now(),
+        ]);
+        return back();
     }
 
     public function token($token)

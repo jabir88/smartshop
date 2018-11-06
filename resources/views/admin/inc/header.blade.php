@@ -40,6 +40,7 @@
                 </a>
             </li>
             <li class="divider"></li>
+
             @endforeach
 
             <li>
@@ -53,7 +54,9 @@
     </li>
     @endif
     <!-- /.dropdown -->
-
+    @php
+        $i = 0;
+    @endphp
     <li class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
             <i class="fa fa-tasks fa-fw"></i> <i class="fa fa-caret-down"></i>
@@ -70,8 +73,9 @@
                             <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
                                 <span class="sr-only">40% Complete (success)</span>
                             </div>
+
                         </div>
-                    </div>
+                 </div>
                 </a>
             </li>
             <li class="divider"></li>
@@ -134,27 +138,35 @@
     </li>
     <!-- /.dropdown -->
     <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-            <i class="fa fa-bell fa-fw"></i> <i class="fa fa-caret-down"></i>
-        </a>
+
         <ul class="dropdown-menu dropdown-alerts">
+
+            @php
+
+
+                $user =App\User::find(Auth::user()->id);
+
+            @endphp
             @if(Auth::user()->role_id = 1)
+                @foreach ($user->unreadNotifications  as $notification)
             <li>
-                <a href="#">
-                        @php
-                            $user =App\User::find(Auth::user()->id);
-                        @endphp
+                <a href="{{ url('/admin/markNotiRead/'. $notification->id) }}">
+
                     <div>
                         <i class="fa fa-user-md"></i>
-                        @foreach ($user->notifications as $notification)
+
                         {{$notification->data['username']}} Is Register .
 
-                        @endforeach
 
                         <span class="pull-right text-muted small">4 minutes ago</span>
                     </div>
                 </a>
             </li>
+                @php
+                    $i++;
+                @endphp
+
+                @endforeach
             @endif
             {{--<li>--}}
                 {{--<a href="#">--}}
@@ -208,6 +220,15 @@
                 {{--</a>--}}
             {{--</li>--}}
         </ul>
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+            <i class="fa fa-bell fa-fw"></i>
+            @php
+                echo  $i;
+            @endphp
+            {{--{{ $notification/2 }}--}}
+            <i class="fa fa-caret-down"></i>
+        </a>
+
         <!-- /.dropdown-alerts -->
     </li>
     <!-- /.dropdown -->

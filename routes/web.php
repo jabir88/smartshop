@@ -80,6 +80,7 @@ Route::get('/admin/permission', 'AdminController@permission')->name('');
 Route::get('admin/contact-message', 'ContactController@contactmess')->name('');
 Route::get('admin/contact-message/mark/{conus_id}', 'ContactController@contactmark')->name('');
 
+Route::get('/admin/markNotiRead/{id}', 'AdminController@markNotiRead')->name('markNotiRead');
 // Verify Email
 
 Route::get('/admin/verify', 'AdminController@verify')->name('verify');
